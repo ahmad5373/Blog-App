@@ -1,0 +1,42 @@
+.post-modal .modal-content {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-modal .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: none;
+  }
+  
+  .post-modal .modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .post-modal .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-shadow: none;
+  }
+  
+  .post-modal .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .mt-6{
+    margin-top: 12px;
+  }
+
+  .post-modal {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .post-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
