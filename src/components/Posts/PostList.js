@@ -59,12 +59,12 @@ const PostList = ({ posts, fetchPosts }) => {
     try {
       const token = getToken();
       await deleteComment(commentId, token);
-      toast.success('Comment deleted successfully.');
+      toast.success(response?.data?.message || 'Comment deleted successfully.');
       fetchPosts();
       setActiveCommentId(null);
     } catch (error) {
       console.error("Error deleting comment:", error);
-      toast.error('Failed to delete comment.');
+      toast.error(error?.response?.data?.message || 'Something went wrong. Try again.');
     }
   };
 
