@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/';
+// const API_BASE_URL = 'http://localhost:5000/';  // Localy Base URL
+const API_BASE_URL = 'https://blog-app-backend-nest-js.vercel.app/';  // Live Base URL
 
 export const api = axios.create({
     baseURL: API_BASE_URL,

@@ -40,10 +40,10 @@ const BlogNavbar = ({ isAuthenticated, handleLogout, fetchPosts }) => {
               ) : (
                 <>
                   <li className="nav-item ">
-                    <Link className="nav-link navbar-brand" to="/login">Login</Link>
+                    <Link className="btn btn-outline-light custom-margin-right" to="/login">Login</Link>
                   </li>
                   <li className="nav-item mr-12">
-                    <Link className="nav-link navbar-brand" to="/register">Register</Link>
+                    <Link className="btn btn-outline-light custom-margin-right" to="/register">Register</Link>
                   </li>
                 </>
               )}

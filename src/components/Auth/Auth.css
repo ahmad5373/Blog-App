@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #dbdfe2; 
+    background-color: #f2f5ee
   }
   
   .login-card {
@@ -50,7 +50,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #dbdfe2; 
+    background-color: #f2f5ee; 
   }
   
   .register-card {
