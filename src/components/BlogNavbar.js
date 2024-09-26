@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PostModal from './Posts/PostModal';
 import '../index.css';
 
-const BlogNavbar = ({ isAuthenticated, handleLogout, fetchPosts }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [actionType, setActionType] = useState(''); 
-
-  const handleCreate = () => {
-    setActionType('create');
-    setShowModal(true);
-  };
-
+const BlogNavbar = ({ isAuthenticated, handleLogout}) => {
     return (
       <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -28,11 +19,6 @@ const BlogNavbar = ({ isAuthenticated, handleLogout, fetchPosts }) => {
             <ul className="navbar-nav mr-4">
               {isAuthenticated ? (
                 <>
-                  <li className="nav-item">
-                  <button className="btn btn-outline-light custom-margin-right" onClick={() => handleCreate()}>
-                      Create Post
-                  </button>
-                  </li>
                   <li className="nav-item ">
                     <button className="btn btn-outline-light custom-margin-right" onClick={handleLogout}>Logout</button>
                   </li>
@@ -51,12 +37,6 @@ const BlogNavbar = ({ isAuthenticated, handleLogout, fetchPosts }) => {
           </div>
         </div>
       </nav>
-      <PostModal
-        show={showModal}
-        handleClose={() => setShowModal(false)}
-        actionType={actionType}
-        fetchPosts={fetchPosts}
-      />
       </>
     );
   };

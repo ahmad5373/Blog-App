@@ -5,28 +5,16 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import BlogNavbar from './components/BlogNavbar';
 import { getToken, removeToken } from './utils/auth'; 
-import { toast, ToastContainer } from 'react-toastify';
+import {  ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getallPost } from './utils/api';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
-
-  const fetchPosts = async () => {
-    try {
-        const response = await getallPost();
-        setPosts(response.data);
-    } catch (error) {
-      toast.error(error?.response?.data?.message || 'Something Went Wrong. Try Again');
-    }
-  };
 
   useEffect(() => {
     const token = getToken();
       setIsAuthenticated(!!token)
-      fetchPosts();
 
   }, []);
 
@@ -38,10 +26,10 @@ const App = () => {
 
   return (
     <div>
-      <BlogNavbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} fetchPosts={fetchPosts}/>
+      <BlogNavbar isAuthenticated={isAuthenticated} handleLogout={handleLogout}/>
       <div className="container mt-4">
         <Routes>
-          <Route path="/" exact element={<HomePage posts={posts} fetchPosts={fetchPosts} />} />
+          <Route path="/" exact element={<HomePage />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<Register setIsAuthenticated={setIsAuthenticated} />} />
         </Routes>

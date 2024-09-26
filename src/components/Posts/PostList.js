@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import { jwtDecode } from "jwt-decode";
 import PostModal from './PostModal';
 import '../../index.css';
@@ -37,6 +37,11 @@ const PostList = ({ posts, fetchPosts }) => {
     getCurrentUserId();
     setTotalPages(Math.ceil(posts.length / postsPerPage));
   }, [posts]);
+  
+  const handleCreate = () => {
+    setActionType('create');
+    setShowModal(true);
+  };
 
   const handleEdit = (post) => {
     setSelectedPost(post);
@@ -103,6 +108,14 @@ const PostList = ({ posts, fetchPosts }) => {
 
   return (
     <div className="container mt-4">
+      {isAuthenticated && (
+      <button
+      className="btn btn-success mb-3" 
+      onClick={handleCreate}
+    >
+      <FaPlus className="mr-2" /> Create Post 
+    </button>
+    )}
       {posts.length < 1 ? (
         <h5>Post Blog is currently empty. There are no posts.</h5>
       ) : (
