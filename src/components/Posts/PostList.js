@@ -7,6 +7,7 @@ import '../../index.css';
 import { getToken } from '../../utils/auth';
 import { createComment, deleteComment, editComment } from '../../utils/api';
 import { toast } from 'react-toastify';
+import ClipLoader from "react-spinners/ClipLoader";
 
 const PostList = ({ posts, fetchPosts }) => {
   const [page, setPage] = useState(1);
@@ -151,7 +152,7 @@ const PostList = ({ posts, fetchPosts }) => {
                           <small className="text-muted">{new Date(comment.updatedAt).toLocaleString()}</small>
                           <p>{comment.content}</p>
                         </div>
-                        <div>
+                        <div className='position-relative'>
                           <button
                             className="btn btn-link comment-btn"
                             onClick={() => setActiveCommentId(activeCommentId === comment.id ? null : comment.id)}
