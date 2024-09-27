@@ -38,18 +38,18 @@ const PostList = ({ posts, fetchPosts }) => {
     setTotalPages(Math.ceil(posts.length / postsPerPage));
   }, [posts]);
   
-  const handleCreate = () => {
+  const handleCreatePost = () => {
     setActionType('create');
     setShowModal(true);
   };
 
-  const handleEdit = (post) => {
+  const handleEditPost = (post) => {
     setSelectedPost(post);
     setActionType('edit');
     setShowModal(true);
   };
 
-  const handleDelete = (post) => {
+  const handleDeletePost = (post) => {
     setSelectedPost(post);
     setActionType('delete');
     setShowModal(true);
@@ -111,7 +111,7 @@ const PostList = ({ posts, fetchPosts }) => {
       {isAuthenticated && (
       <button
       className="btn btn-success mb-3" 
-      onClick={handleCreate}
+      onClick={handleCreatePost}
     >
       <FaPlus className="mr-2" /> Create Post 
     </button>
@@ -206,10 +206,10 @@ const PostList = ({ posts, fetchPosts }) => {
               <div className="card-footer text-muted">
                 {post.user.id === currentUserId && (
                   <div className="post-actions d-flex justify-content-end">
-                    <button className="btn btn-info custom-margin-right" onClick={() => handleEdit(post)}>
+                    <button className="btn btn-info custom-margin-right" onClick={() => handleEditPost(post)}>
                       <FaEdit /> Edit
                     </button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(post)}>
+                    <button className="btn btn-danger" onClick={() => handleDeletePost(post)}>
                       <FaTrash /> Delete
                     </button>
                   </div>

@@ -4,23 +4,29 @@ import { setToken } from '../../utils/auth';
 import './Auth.css'; 
 import { signup } from '../../utils/api';
 import { toast } from 'react-toastify';
+import FadeLoader from 'react-spinners/FadeLoader';
 
 const Register = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const response = await signup({ username, email, password });
       const { access_token } = response.data;
       toast.success(response?.data?.message || 'Register User successfully!');
       setToken(access_token);
       setIsAuthenticated(true);
+      setLoading(false);
       navigate('/');
     } catch (err) {
+      setLoading(false);
       toast.error(err?.response?.data?.message || 'Something went wrong.');
     }
   };
@@ -60,9 +66,21 @@ const Register = ({ setIsAuthenticated }) => {
               required
             />
           </div>
+           {loading ? (
+           <div className='d-flex justify-content-center align-center'>
+           <FadeLoader
+             loading={loading}
+             size={150}
+             aria-label="Loading Spinner"
+             data-testid="loader"
+             color='blue'
+           />
+           </div>
+          ) : (
           <button type="submit" className="btn btn-primary btn-block mt-6">
             Register
           </button>
+          )}
         </form>
         <div className="text-center mt-3">
           <span>Already have an account? </span>
